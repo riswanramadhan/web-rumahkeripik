@@ -1,5 +1,5 @@
 /* ============================================
-   RUMAH KERIPIK — Main JavaScript
+   RUMAH KERIPIK - Main JavaScript
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +25,7 @@ const Navbar = {
     this.navMenu = document.getElementById('nav-menu');
     this.overlay = document.getElementById('mobile-overlay');
     this.navLinks = document.querySelectorAll('.nav-link');
+    this.menuLinks = this.navMenu?.querySelectorAll('a') || [];
 
     if (!this.navbar) return;
 
@@ -42,8 +43,12 @@ const Navbar = {
     }
 
     // Close menu on nav link click
-    this.navLinks.forEach(link => {
+    this.menuLinks.forEach(link => {
       link.addEventListener('click', () => this.closeMenu());
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') this.closeMenu();
     });
 
     // Active link on scroll
@@ -62,13 +67,18 @@ const Navbar = {
     this.hamburger.classList.toggle('active');
     this.navMenu.classList.toggle('active');
     if (this.overlay) this.overlay.classList.toggle('active');
-    document.body.style.overflow = this.navMenu.classList.contains('active') ? 'hidden' : '';
+    const isOpen = this.navMenu.classList.contains('active');
+    this.hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    this.navbar.classList.toggle('menu-open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   },
 
   closeMenu() {
     this.hamburger.classList.remove('active');
     this.navMenu.classList.remove('active');
     if (this.overlay) this.overlay.classList.remove('active');
+    this.hamburger.setAttribute('aria-expanded', 'false');
+    this.navbar.classList.remove('menu-open');
     document.body.style.overflow = '';
   },
 
@@ -469,10 +479,10 @@ const ContactForm = {
     const nama = formData.get('nama');
     const pesan = formData.get('pesan');
 
-    // Redirect to WhatsApp with message
     const waNumber = '6288210573869';
+    const sourceNote = 'pesan ini dikirim dari website rumah keripik melalui program dekatlokal';
     const waText = encodeURIComponent(
-      `Halo Rumah Keripik! 👋\n\nNama: ${nama}\nEmail: ${formData.get('email')}\nSubjek: ${formData.get('subjek')}\n\nPesan:\n${pesan}`
+      `Halo Rumah Keripik!\n\nNama: ${nama}\nEmail: ${formData.get('email')}\nSubjek: ${formData.get('subjek')}\n\nPesan:\n${pesan}\n\n${sourceNote}`
     );
     const waUrl = `https://wa.me/${waNumber}?text=${waText}`;
 
