@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://rumahkeripik.dekatlokal.com/</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://rumahkeripik.dekatlokal.com/assets/images/hero-bg.jpg</image:loc>
+      <image:caption>Keripik Pisang Bunda Rumah Keripik Akkarepposoki Makassar Gowa</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rumahkeripik.dekatlokal.com/assets/images/keripik-pisang-real.jpg</image:loc>
+      <image:caption>Keripik Pisang Bunda Rumah Keripik untuk camilan dan oleh-oleh Makassar Gowa</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rumahkeripik.dekatlokal.com/assets/images/putu-kacang-real.jpg</image:loc>
+      <image:caption>Putu Kacang Bunda Rumah Keripik camilan tradisional Makassar Gowa</image:caption>
+    </image:image>
+  </url>
+</urlset>
